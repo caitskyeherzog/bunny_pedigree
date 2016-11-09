@@ -1,0 +1,1 @@
+json.partial! "bunnies/bunny", bunny: @bunny

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @bunny.name %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @bunny.color %>
+</p>
+
+<p>
+  <strong>Dob:</strong>
+  <%= @bunny.dob %>
+</p>
+
+<p>
+  <strong>Mother:</strong>
+  <%= link_to @bunny.mother.name, @bunny.mother if @bunny.mother %>
+</p>
+
+<p>
+  <strong>Father:</strong>
+  <%= link_to @bunny.father.name, @bunny.father if @bunny.father %>
+</p>
+
+<p>
+  <strong>Children:</strong>
+  <ul>
+  	<% @bunny.children.each do |child| %>
+  	<li><%= link_to child.name, child %></li>
+  	<%end%>
+  </ul>
+
+
+</p>
+<%= link_to 'Edit', edit_bunny_path(@bunny) %> |
+<%= link_to 'Back', bunnies_path %>

@@ -1,0 +1,41 @@
+<%= form_for(bunny) do |f| %>
+  <% if bunny.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bunny.errors.count, "error") %> prohibited this bunny from being saved:</h2>
+
+      <ul>
+      <% bunny.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :color %>
+    <%= f.text_field :color, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :dob %>
+    <%= f.date_select :dob %>
+  </div>
+
+  <div class="field">
+    <%= f.label :mother_id %>
+    <%= f.select :mother_id, Bunny.all.collect { |p| [ p.name, p.id ] }, {include_blank: true}, {class:"form-control"} %>
+  </div>
+  <div class="field">
+    <%= f.label :father_id %>
+    <%= f.select :father_id, Bunny.all.collect { |p| [ p.name, p.id ] }, {include_blank: true}, {class:"form-control"} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save Bunny", class:"btn btn-default" %>
+  </div>
+<% end %>
